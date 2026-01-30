@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shanuka Raveen | Portfolio</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <ul>
+        <li><a href="#about" class="nav-link active">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header>
+    <h1>Shanuka Raveen</h1>
+    <p>Web Developer | Designer</p>
+    <img src="profile.jpg" alt="My Photo" class="profile-pic">
+    <button id="dark-mode-toggle" class="my-btn ripple">🌙 Dark Mode</button>
+</header>
+
+<!-- About -->
+<section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+        I am Shanuka Raveen, a passionate beginner web developer from Sri Lanka.
+        I enjoy creating clean, modern, and responsive websites using HTML and CSS.
+        Currently learning advanced front-end development to enhance my skills.
+    </p>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="skills">
+    <h2>Skills</h2>
+    <div class="skill">
+        <p>HTML</p>
+        <div class="skill-bar"><div class="skill-level html"></div></div>
+    </div>
+    <div class="skill">
+        <p>CSS</p>
+        <div class="skill-bar"><div class="skill-level css"></div></div>
+    </div>
+    <div class="skill">
+        <p>Responsive Design</p>
+        <div class="skill-bar"><div class="skill-level responsive"></div></div>
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="projects">
+    <h2>Projects</h2>
+    <div class="project-card reveal">
+        <h3>Personal Portfolio</h3>
+        <p>A clean, modern, and responsive portfolio website using HTML & CSS.</p>
+    </div>
+    <div class="project-card reveal">
+        <h3>Landing Page</h3>
+        <p>A modern landing page design for a fictional company.</p>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:shanuka@example.com">shanuka@example.com</a></p>
+    <a href="mailto:shanuka@example.com">
+        <button class="my-btn ripple">Contact Me</button>
+    </a>
+    <div class="social-links">
+        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/yourprofile" target="_blank">GitHub</a> |
+        <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Shanuka Raveen</p>
+</footer>
+
+<!-- JS -->
+<script>
+// Dark Mode Toggle
+const toggleBtn = document.getElementById('dark-mode-toggle');
+toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
+
+// Scroll Animation for Skills & Reveal
+const skillLevels = document.querySelectorAll('.skill-level');
+const reveals = document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    // Skills animation
+    skillLevels.forEach(skill => {
+        const skillTop = skill.getBoundingClientRect().top;
+        if(skillTop < triggerBottom){
+            skill.classList.add('active');
+        }
+    });
+
+    // Project reveal animation
+    reveals.forEach(reveal => {
+        const revealTop = reveal.getBoundingClientRect().top;
+        if(revealTop < window.innerHeight - 50){
+            reveal.classList.add('active');
+        }
+    });
+
+    // Active section highlight
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    sections.forEach((section, index) => {
+        const top = section.getBoundingClientRect().top;
+        if(top <= 100 && top >= -section.offsetHeight + 100){
+            navLinks.forEach(link => link.classList.remove('active'));
+            navLinks[index].classList.add('active');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
