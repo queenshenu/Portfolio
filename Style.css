@@ -1,0 +1,264 @@
+/* Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(-45deg, #f9fafb, #e0f2fe, #fef3c7, #f0fdfa);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #333;
+    max-width: 900px;
+    margin: auto;
+    padding: 25px;
+    line-height: 1.7;
+    scroll-behavior: smooth;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Navigation */
+nav {
+    background-color: #ffffffcc;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #1e40af;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    color: #2563eb;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: #1f2937;
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: #4b5563;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 160px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Buttons with Ripple */
+.my-btn {
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.my-btn:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+}
+
+.my-btn.ripple::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255,255,255,0.4);
+    display: block;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.6s, opacity 1s;
+}
+
+.my-btn.ripple:active::after {
+    transform: scale(4);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Sections */
+section {
+    padding: 40px 0;
+}
+
+h2 {
+    color: #1e40af;
+    margin-bottom: 20px;
+}
+
+/* Skills */
+.skill {
+    margin-bottom: 20px;
+}
+
+.skill-bar {
+    background-color: #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 18px;
+}
+
+.skill-level {
+    height: 100%;
+    border-radius: 12px;
+    width: 0%;
+    transition: width 1s ease;
+}
+
+.skill-level.active.html { width: 90%; background-color: #f97316; }
+.skill-level.active.css { width: 85%; background-color: #3b82f6; }
+.skill-level.active.responsive { width: 80%; background-color: #10b981; }
+
+/* Project cards */
+.project-card {
+    background-color: white;
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s, opacity 1s, transform 1s;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.project-card.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card h3 {
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+/* Contact */
+.contact a {
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    margin-top: 15px;
+}
+
+.social-links a {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #1f2937;
+    color: white;
+    margin-top: 40px;
+    border-radius: 10px;
+}
+
+/* Dark mode */
+body.dark-mode {
+    background-color: #111827;
+    color: #d1d5db;
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+    color: #a78bfa;
+}
+
+body.dark-mode .project-card,
+body.dark-mode .skill-bar {
+    background-color: #1f2937;
+}
+
+body.dark-mode .my-btn {
+    background-color: #a78bfa;
+    color: #111827;
+}
+
+body.dark-mode .social-links a,
+body.dark-mode nav a {
+    color: #a78bfa;
+}
+
+/* Responsive – Mobile */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .profile-pic {
+        width: 130px;
+    }
+
+    .my-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
